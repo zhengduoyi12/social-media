@@ -5,6 +5,7 @@ import {
 } from '@clerk/nextjs'
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import NaviBar from "@/components/Navibar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,15 +34,25 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <header className="flex justify-end items-center p-4 gap-4 h-16">
-          </header>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-          {children}
+            <div className="min-h-screen">
+              <NaviBar />
+              <main className="py-8">
+                <div className="max-w-7xl mx-auto px-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div className="hidden lg:block lg:col-span-3">side bar</div>
+                    <div className="lg:col-span-9"> {children} </div>
+                  </div>
+                </div>
+
+              </main>
+
+            </div>
           </ThemeProvider>
         </body>
       </html>
