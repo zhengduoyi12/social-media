@@ -32,7 +32,7 @@ model User{
   likes Like[]
 
   followers Follows[] @relation("following")
-  followings Follows[]  @relation("follower")
+  following Follows[]  @relation("follower")
 
   notifications Notification[]  @relation("userNotifications")
   notificationsCreated Notification[]  @relation("notificationCreator")
